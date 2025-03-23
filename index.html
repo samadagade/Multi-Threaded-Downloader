@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1 id="app-title"></h1>
+  <div class="input-container">
+    <input id="url-input" type="url" placeholder="">
+    <button id="add-download"></button>
+  </div>
+  <div id="downloads"></div>
+
+  <script src="main.js"></script>
+  <script>
+    // Load the strings.json file and update the UI
+    fetch('strings.json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('app-title').innerText = data.appTitle;
+        document.getElementById('url-input').placeholder = data.urlInputPlaceholder;
+        document.getElementById('add-download').innerText = data.addDownloadButton;
+      })
+      .catch(error => console.error('Error loading strings:', error));
+  </script>
+</body>
+</html>
